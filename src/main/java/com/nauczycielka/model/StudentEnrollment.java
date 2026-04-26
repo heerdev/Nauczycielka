@@ -30,12 +30,19 @@ public class StudentEnrollment {
     @JoinColumn(name = "student_id", nullable = false)
     private User student;
 
+    @Builder.Default
     @Column(name = "enrolled_at", nullable = false, updatable = false)
     private LocalDateTime enrolledAt = LocalDateTime.now();
 
     @Column(name = "completed_at")
     private LocalDateTime completedAt;
 
+    @Builder.Default
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
+
+    @PrePersist
+    protected void onCreate() {
+        this.enrolledAt = LocalDateTime.now();
+    }
 }

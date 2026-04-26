@@ -1,41 +1,41 @@
-spring.application.name=nauczycielka
+spring.application.name: nauczycielka
 
 # Server Configuration
-server.port=8080
-server.servlet.context-path=/
+server.port: 8080
+server.servlet.context-path: /
 
 # DataSource Configuration - H2 for development
-spring.datasource.url=jdbc:h2:mem:nauczycielka
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
+spring.datasource.url: jdbc:h2:mem:nauczycielka
+spring.datasource.driverClassName: org.h2.Driver
+spring.datasource.username: sa
+spring.datasource.password:
 
 # JPA Configuration
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.jpa.hibernate.ddl-auto=create-drop
-spring.jpa.show-sql=false
-spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto: create-drop
+spring.jpa.show-sql: false
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
 
 # H2 Console
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
+spring.h2.console.enabled: true
+spring.h2.console.path: /h2-console
 
 # Logging
-logging.level.root=INFO
-logging.level.com.nauczycielka=DEBUG
-logging.level.org.springframework.web=DEBUG
-logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
+logging.level.root: INFO
+logging.level.com.nauczycielka: DEBUG
+logging.level.org.springframework.web: DEBUG
+#logging.pattern.console: %d{yyyy-MM-dd HH:mm:ss} - %msg%n
 
 # Actuator
-management.endpoints.web.exposure.include=health,info,metrics
-management.endpoint.health.show-details=always
+management.endpoints.web.exposure.include: health,info,metrics
+management.endpoint.health.show-details: always
 
 # Ollama Configuration
-ollama.base-url=http://localhost:11434
-ollama.model=qwen2
-ollama.timeout=300000
+ollama.base-url: http://localhost:11434
+ollama.model: qwen2
+ollama.timeout: 300000
 
 # Application Configuration
-app.name=Nauczycielka - Live Tutorial Platform
-app.version=1.0.0
+app.name: Nauczycielka - Live Tutorial Platform
+app.version: 1.0.0

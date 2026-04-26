@@ -35,9 +35,19 @@ public class Transcript {
     @Column(name = "speaker")
     private String speaker;
 
+    @Builder.Default
     @Column(name = "is_processed")
     private Boolean isProcessed = false;
 
+    @Builder.Default
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        if (this.timestamp == null) {
+            this.timestamp = LocalDateTime.now();
+        }
+    }
 }

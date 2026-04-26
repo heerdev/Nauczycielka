@@ -26,7 +26,7 @@ public class DataInitializer {
                         .role(UserRole.INSTRUCTOR)
                         .build();
                 userRepository.save(instructor);
-                log.info("Created sample instructor: {}", instructor.getEmail());
+               // log.info("Created sample instructor: {}", instructor.getEmail());
 
                 // Create sample students
                 for (int i = 1; i <= 3; i++) {
@@ -37,7 +37,7 @@ public class DataInitializer {
                             .role(UserRole.STUDENT)
                             .build();
                     userRepository.save(student);
-                    log.info("Created sample student: {}", student.getEmail());
+                //   log.info("Created sample student: {}", student.getEmail());
                 }
 
                 // Create sample course

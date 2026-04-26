@@ -2,6 +2,7 @@ package com.nauczycielka.service;
 
 import com.nauczycielka.model.CourseSummary;
 import com.nauczycielka.repository.CourseSummaryRepository;
+import com.nauczycielka.repository.LiveSessionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,20 +15,21 @@ public class CourseSummaryService {
 
     private final CourseSummaryRepository summaryRepository;
     private final CourseService courseService;
-    private final LiveSessionService liveSessionService;
+    private final LiveSessionRepository liveSessionRepository;
 
     public CourseSummaryService(CourseSummaryRepository summaryRepository,
                                 CourseService courseService,
-                                LiveSessionService liveSessionService) {
+                                LiveSessionRepository liveSessionRepository) {
         this.summaryRepository = summaryRepository;
         this.courseService = courseService;
-        this.liveSessionService = liveSessionService;
+        this.liveSessionRepository = liveSessionRepository;
     }
 
     @Transactional
     public CourseSummary createCourseSummary(Long courseId, Long sessionId, String summary, String aiModel, Long processingTimeMs) {
         var course = courseService.getCourseById(courseId);
-        var session = liveSessionService.getLiveSessionById(sessionId);
+        var session = liveSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new IllegalArgumentException("Live session not found with ID: " + sessionId));
 
         CourseSummary courseSummary = CourseSummary.builder()
                 .course(course)
